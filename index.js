@@ -1,18 +1,30 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  //make empty array for result
+  let res = []
+  //make empty map
+  let numMap = new Map();
+  //iterate over array
+  for (let i = 0; i < array.length; i++) {
+  //find goal number that would result in target number
+    const currentNum = array[i]
+    const goalNum = target - currentNum
+    //if goal exists, return result array
+    if (numMap.has(goalNum)) {
+      res[0] = array[i]
+      res[1] = numMap.get(goalNum)
+      return true
+    }
+    else {
+      numMap.set(currentNum, i)
+    }
+  }
+  console.log('numMap' + numMap)
+  //if goal does not exist, return empty array
+  return false
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
+console.log(hasTargetSum([1,3,5,7], 12))
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
